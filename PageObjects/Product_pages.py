@@ -16,7 +16,8 @@ class Product_page:
     password_id = "login_password"
     click_login_xpath = "(//button[text()='Login'])[2]"
     price_verify_css  = ".fw-bold "
-    proceed_to_checkout= "//button[text()='Proceed to Checkout ']"
+    proceed_to_checkout_xpath= "//button[text()='Proceed to Checkout ']"
+    offer_product_price_xpath = "//span[@style='color: rgb(0, 0, 0); font-weight: bold;']"
 
 
     def __init__(self,driver):
@@ -46,7 +47,17 @@ class Product_page:
         self.driver.find_element(By.XPATH, self.click_login_xpath).click()
 
     def click_on_procced_to_checkout(self):
-        self.driver.find_element(By.XPATH, self.proceed_to_checkout).click()
+        self.driver.find_element(By.XPATH, self.proceed_to_checkout_xpath).click()
+
+    def offer_product(self):
+        try:
+            self.offer_price = self.driver.find_element(By.XPATH, self.offer_product_price_xpath)
+            print(self.offer_price.text)
+            self.remove_rupees_sign = self.offer_price.text.replace('₹', '')
+        except:
+            print("exception occure")
+
+
 
 
 

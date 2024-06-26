@@ -15,4 +15,9 @@ class Read_proeprties:
         enter_user_password = config.get("user inputs", "password")
         return enter_user_password
 
+    @staticmethod
+    def user_book():
+        enter_user_book = config.get("user inputs", "search_your_book")
+        return enter_user_book
+
 
