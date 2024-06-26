@@ -22,7 +22,6 @@ class Test_productPage:
 
     def test_verify_cart_value(self,setup):
         self.driver = setup
-
         self.product_page = Product_page(self.driver)
         self.product_page.search_product(self.search_book)
         self.all_product = self.driver.find_elements(By.XPATH, self.All_products)
@@ -88,7 +87,7 @@ class Test_productPage:
                 self.current_value = self.current_value + int(self.convert_int)
 
         #cart Total price display
-        print("Your Cart total value is:- " , self.current_value)
+        print("Your Cart total value is:- ", self.current_value)
 
         self.Total_amount = self.driver.find_element(By.ID, self.Total_price_of_cart_total)
         #removing again ruppes sign
