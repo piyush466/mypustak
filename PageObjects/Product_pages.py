@@ -18,7 +18,7 @@ class Product_page:
     price_verify_css  = ".fw-bold "
     proceed_to_checkout_xpath= "//button[text()='Proceed to Checkout ']"
     offer_product_price_xpath = "//span[@style='color: rgb(0, 0, 0); font-weight: bold;']"
-
+    click_on_want_book = "//button[text()='Yes , I want this book']"
 
     def __init__(self,driver):
         self.driver =driver
@@ -48,6 +48,7 @@ class Product_page:
 
     def click_on_procced_to_checkout(self):
         self.driver.find_element(By.XPATH, self.proceed_to_checkout_xpath).click()
+        self.driver.find_element(By.XPATH, self.click_on_want_book).click()
 
     def offer_product(self):
         try:

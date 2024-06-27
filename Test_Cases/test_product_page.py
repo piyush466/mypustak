@@ -18,6 +18,7 @@ class Test_productPage:
     price_of_product_xpath ="//span[@id='cartBookShippingS']"
     Total_price_of_cart_total = "Totalpricediv"
     offer_product_price_xpath = "//span[@style='color: rgb(0, 0, 0); font-weight: bold;']"
+    click_on_want_book = "//button[text()='Yes , I want this book']"
 
 
     def test_verify_cart_value(self,setup):
@@ -35,7 +36,7 @@ class Test_productPage:
         #Add to card buttons
         self.allbuttons = self.driver.find_elements(By.XPATH, self.buttons)
 
-        for self.button in self.allbuttons[:3]:
+        for self.button in self.allbuttons[:4]:
             try:
                 self.button.click()
                 if self.driver.find_element(By.XPATH, self.add_to_cart_button1).is_displayed():
@@ -44,7 +45,8 @@ class Test_productPage:
                 else:
                     self. driver.find_element(By.XPATH, self.add_to_cart_button2).click()
             except:
-                print("Exception Occure")
+                None
+
 
         #click on ad to cart
         self.product_page.click_on_add_to_cart()
@@ -59,11 +61,13 @@ class Test_productPage:
         self.allPrice = self.driver.find_elements(By.XPATH, self.price_of_product_xpath)
         self.pricelist= []
 
+
         # if there is any offer product then this is exicute
         try:
             self.offer_price = self.driver.find_element(By.XPATH, self.offer_product_price_xpath)
             self.remove_rupees_sign = self.offer_price.text.replace('₹', '')
-            self.offer_price_book = int(self.remove_rupees_sign)   #offer product price
+            self.offer_price_book = int(self.remove_rupees_sign)
+            print(self.offer_price_book)#offer product price
 
         except:
             print("exception Occure2")
@@ -76,18 +80,23 @@ class Test_productPage:
         #remove the ruppes sign
         for self.amount in range(len(self.pricelist)):
             self.pricelist[self.amount] = self.pricelist[self.amount].replace('₹', '')
+        # print(self.pricelist)
 
         #Adding the total price of products
         self.current_value= 0
         if self.driver.find_element(By.XPATH, self.offer_product_price_xpath).is_displayed():
             for self.convert_int in self.pricelist:
-                self.current_value = self.current_value + int(self.convert_int) + self.offer_price_book
+                self.price_int = int(self.convert_int)
+                self.current_value = self.current_value + self.price_int
+                self.offer_and_current_value = self.current_value + self.offer_price_book
+            print("Sum of offer book and without offer book :", self.offer_and_current_value)
+
         else:
             for self.convert_int in self.pricelist:
-                self.current_value = self.current_value + int(self.convert_int)
+                self.current_value = self.current_value + self.price_int
 
         #cart Total price display
-        print("Your Cart total value is:- ", self.current_value)
+        print("Your Cart total value is:- ", self.offer_and_current_value)
 
         self.Total_amount = self.driver.find_element(By.ID, self.Total_price_of_cart_total)
         #removing again ruppes sign
@@ -97,8 +106,10 @@ class Test_productPage:
         #Total price
         print("Your Total value:-", self.convert_int_total_value)
         #comparing the both price
-        assert self.convert_int_total_value == self.current_value
+        assert self.convert_int_total_value == self.offer_and_current_value, "value is not matching"
         self.product_page.click_on_procced_to_checkout()
+
+        time.sleep(4)
         self.driver.quit()
 
 
