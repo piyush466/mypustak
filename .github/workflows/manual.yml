@@ -17,13 +17,21 @@ jobs:
         with:
           python-version: '3.11'
 
+      - name: Upgrade pip and install packaging
+        run: |
+           pip install --upgrade pip
+           pip install packaging==21.3
+
       # Install necessary packages from requirements.txt
       - name: Install dependencies
         run: pip install -r requirements.txt
 
+      - name: Create report directory
+        run: mkdir -p ./pytest-report
+
       # Run the PyTest script
       - name: Run PyTest
-        run: pytest --html=/Users/user/Documents/Projects/test/Reports/report.html
+        run: pytest --html=./pytest-report/report.html --self-contained-html
 
 
       - name: Upload test artifacts
@@ -31,5 +39,5 @@ jobs:
         if: ${{ always() }}
         with:
           name: test-results
-          path: /Users/user/Documents/Projects/test/Reports/report.html
+          path: pytest-report/report.html
           if-no-files-found: error # 'warn' or 'ignore' are also available, defaults to warn
