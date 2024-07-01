@@ -63,7 +63,7 @@ class Test_productPage:
                 else:
                     self. driver.find_element(By.XPATH, self.add_to_cart_button2).click()
             except Exception as E:
-                print("Exception occure")
+                None
 
 
 
