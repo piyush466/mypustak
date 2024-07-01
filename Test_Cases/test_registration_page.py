@@ -12,7 +12,7 @@ class Test_registration:
         self.driver = setup
         self.register = Register(self.driver)
         self.register.click_login()
-        self.register.send_email("piyush3@gmail.com")
+        self.register.send_email("piyush5@gmail.com")
         self.register.enter_mobile_no("8411878794")
         self.register.enter_password("piyush@123")
         self.register.click_sign_up()
