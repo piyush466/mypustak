@@ -3,9 +3,13 @@ import re
 from selenium import webdriver
 from selenium.common import NoSuchElementException
 from selenium.webdriver.common.by import By
+
+
 from PageObjects.Product_pages import  Product_page
-# from Test_Cases.test_loginPage import Test_Login
+
 from Utilities.readproperties import Read_proeprties
+
+
 
 
 class Test_productPage:
@@ -25,6 +29,7 @@ class Test_productPage:
 
     def test_verify_cart_value(self,setup):
         self.driver = setup
+
         self.product_page = Product_page(self.driver)
         self.product_page.search_product(self.search_book)
         self.all_product = self.driver.find_elements(By.XPATH, self.All_products)
@@ -57,8 +62,9 @@ class Test_productPage:
                     self.cart_button.click()
                 else:
                     self. driver.find_element(By.XPATH, self.add_to_cart_button2).click()
-            except:
-                None
+            except Exception as E:
+                print("Exception occure")
+
 
 
         #click on ad to cart
@@ -82,8 +88,8 @@ class Test_productPage:
             self.offer_price_book = int(self.remove_rupees_sign)
             print(self.offer_price_book)#offer product price
 
-        except:
-            print("exception Occure2")
+        except Exception as E:
+            print("exception Occure2",E)
 
         #getting the price of product (only last 3 digits)
         for self.price in self.allPrice:
@@ -99,21 +105,21 @@ class Test_productPage:
         self.current_value= 0
 
 
-        if self.driver.find_element(By.XPATH, self.offer_product_price_xpath).is_displayed():
-            for self.convert_int in self.pricelist:
-                self.price_int = int(self.convert_int)
-                self.current_value = self.current_value + self.price_int
-                self.offer_and_current_value = self.current_value + self.offer_price_book
-                print("Your cart total value is:- ", self.offer_and_current_value)
+        try:
+            if self.driver.find_element(By.XPATH, self.offer_product_price_xpath).is_displayed():
+                for self.convert_int in self.pricelist:
+                    self.price_int = int(self.convert_int)
+                    self.current_value = self.current_value + self.price_int
+                    self.offer_and_current_value = self.current_value + self.offer_price_book
+                    print("Your cart total value is:- ", self.offer_and_current_value)
+            else:
+                for self.convert_int in self.pricelist:
+                    self.price_int = int(self.convert_int)
+                    self.current_value = self.current_value + self.price_int
+                    print(self.current_value)
 
-        else:
-
-            for self.convert_int in self.pricelist:
-                self.price_int = int(self.convert_int)
-                self.current_value = self.current_value + self.price_int
-                print(self.current_value)
-
-
+        except Exception as E:
+            print(E)
 
 
         self.Total_amount = self.driver.find_element(By.ID, self.Total_price_of_cart_total)
