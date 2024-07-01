@@ -1,8 +1,10 @@
 import time
 import re
 from selenium import webdriver
+from selenium.common import NoSuchElementException
 from selenium.webdriver.common.by import By
 from PageObjects.Product_pages import  Product_page
+# from Test_Cases.test_loginPage import Test_Login
 from Utilities.readproperties import Read_proeprties
 
 
@@ -32,7 +34,18 @@ class Test_productPage:
         self.product_list= []
         for self.product in self.all_product:
             self.product_list.append(self.product.text)
+            # print(self.product.text)
+            # if self.product.text in ["New Wave", "New Start Up Science Book 5"]:
+            #     self.product.click()
 
+                # self.windows = self.driver.window_handles
+                # try:
+                #     self.driver.switch_to.window(self.windows[1])
+                #     print(self.driver.title)
+                # except:
+                #
+
+            # self.driver.switch_to.window(self.windows[0])
         #Add to card buttons
         self.allbuttons = self.driver.find_elements(By.XPATH, self.buttons)
 
@@ -84,19 +97,24 @@ class Test_productPage:
 
         #Adding the total price of products
         self.current_value= 0
+
+
         if self.driver.find_element(By.XPATH, self.offer_product_price_xpath).is_displayed():
             for self.convert_int in self.pricelist:
                 self.price_int = int(self.convert_int)
                 self.current_value = self.current_value + self.price_int
                 self.offer_and_current_value = self.current_value + self.offer_price_book
-            print("Sum of offer book and without offer book :", self.offer_and_current_value)
+                print("Your cart total value is:- ", self.offer_and_current_value)
 
         else:
-            for self.convert_int in self.pricelist:
-                self.current_value = self.current_value + self.price_int
 
-        #cart Total price display
-        print("Your Cart total value is:- ", self.offer_and_current_value)
+            for self.convert_int in self.pricelist:
+                self.price_int = int(self.convert_int)
+                self.current_value = self.current_value + self.price_int
+                print(self.current_value)
+
+
+
 
         self.Total_amount = self.driver.find_element(By.ID, self.Total_price_of_cart_total)
         #removing again ruppes sign

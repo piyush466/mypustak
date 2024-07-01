@@ -8,14 +8,16 @@ from PageObjects.Login_page import Login
 
 
 class Test_Login:
+    Title_of_page = "Buy Online Books in India | Second Hand Books | MyPustak"
 
-    @pytest.mark.regression
+
     def test_login(self, setup):
         self.driver = setup
         self.login = Login(self.driver)
         self.login.click_on_login()
+
         self.login.send_email("piyush.alphabin@gmail.com")
         self.login.click_proceed()
         self.login.send_password("Piyush@123")
         self.login.click_login()
-        self.driver.quit()
+        assert self.driver.title == self.Title_of_page , "Title is not match"

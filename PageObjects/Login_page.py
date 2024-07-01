@@ -29,3 +29,4 @@ class Login:
 
     def click_login(self):
         self.driver.find_element(By.XPATH, self.click_login_xpath).click()
+
