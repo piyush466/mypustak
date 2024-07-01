@@ -24,9 +24,7 @@ jobs:
       # Run the PyTest script
       - name: Run PyTest
         run: pytest --html=/Users/user/Documents/Projects/test/Reports/report.html
-        env:
-          MYPUSTAK_EMAIL: ${{ secrets.MYPUSTAK_EMAIL }}
-          MYPUSTAK_PASSWORD: ${{ secrets.MYPUSTAK_PASSWORD }}
+
 
       - name: Upload test artifacts
         uses: actions/upload-artifact@v2
