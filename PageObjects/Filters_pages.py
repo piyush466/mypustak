@@ -22,6 +22,7 @@ class Filters:
             if self.filter.text == filter_name1:
                 time.sleep(1)
                 self.filter.click()
+                break
 
 
 

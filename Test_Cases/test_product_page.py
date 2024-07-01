@@ -3,14 +3,8 @@ import re
 from selenium import webdriver
 from selenium.common import NoSuchElementException
 from selenium.webdriver.common.by import By
-
-
 from PageObjects.Product_pages import  Product_page
-
 from Utilities.readproperties import Read_proeprties
-
-
-
 
 class Test_productPage:
     user_email = Read_proeprties.user_email()
