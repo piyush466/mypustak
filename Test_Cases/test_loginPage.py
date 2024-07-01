@@ -8,7 +8,7 @@ from PageObjects.Login_page import Login
 
 
 class Test_Login:
-    Title_of_page = "Buy Online Books in India | Second Hand Books | MyPustak"
+    text_match = "span[style='display: flex; align-items: center;']"
 
 
     def test_login(self, setup):
@@ -20,4 +20,6 @@ class Test_Login:
         self.login.click_proceed()
         self.login.send_password("Piyush@123")
         self.login.click_login()
-        # assert self.driver.title == self.Title_of_page , "Title is not match"
+        self.text  = self.driver.find_element(By.CSS_SELECTOR, self.text_match).text
+        assert self.text == "Hi! Reader", "Something went wrong"
+
