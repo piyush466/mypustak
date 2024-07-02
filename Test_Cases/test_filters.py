@@ -3,13 +3,11 @@ import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
-from PageObjects.Filters_pages import Filters
-from PageObjects.Product_pages import Product_page
+from PageObjects.filters_pages import Filters
+from PageObjects.product_pages import Product_page
 
 
 class Test_Filters:
-    filters_name_xpath = "//label[@style='cursor: pointer;']"
-
 
     def test_filter_page(self,setup):
 

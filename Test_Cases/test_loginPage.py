@@ -4,7 +4,7 @@ import pytest
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
-from PageObjects.Login_page import Login
+from PageObjects.login_page import Login
 
 
 class Test_Login:

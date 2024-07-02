@@ -3,7 +3,7 @@ import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
-from PageObjects.Product_pages import Product_page
+from PageObjects.product_pages import Product_page
 
 
 class Filters:

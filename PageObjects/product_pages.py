@@ -10,7 +10,9 @@ class Product_page:
     click_on_search_xpath = "(//button[@type='submit'])[1]"
     all_products_css = "h3"
     click_on_add_to_cart_xpath = "(//span[text()='Cart'])[1]"
+    add_to_cart_btn_css = "div[class='jsx-313054587 Product_addtoCartText__hr75M']"
     # click_cart_xpath ="(//span[@class='MuiBadge-root mui-1rzb3uu'])[1]"
+    click_on_add_to_car_btn_css = "div[style='position: absolute; bottom: 10px; width: 100%;']"
     email_Id_for_login  = "login_email"
     proceed_btn_css= "button[class='MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-fullWidth MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-fullWidth mui-6c44q9']"
     password_id = "login_password"
@@ -35,6 +37,9 @@ class Product_page:
     def click_on_add_to_cart(self):
         self.driver.find_element(By.XPATH, self.click_on_add_to_cart_xpath).click()
         # self.driver.find_element(By.XPATH, self.click_cart_xpath).click()
+
+    def click_om_add_to_cart_btn(self):
+        self.driver.find_element(By.CSS_SELECTOR, self.click_on_add_to_car_btn_css).click()
 
     def send_email(self,email):
         self.driver.find_element(By.ID, self.email_Id_for_login).send_keys(email)

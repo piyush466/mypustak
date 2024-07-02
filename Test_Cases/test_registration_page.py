@@ -3,7 +3,7 @@ import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
-from PageObjects.Registration import Register
+from PageObjects.registration import Register
 
 
 class Test_registration:

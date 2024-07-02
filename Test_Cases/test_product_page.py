@@ -3,7 +3,7 @@ import re
 from selenium import webdriver
 from selenium.common import NoSuchElementException
 from selenium.webdriver.common.by import By
-from PageObjects.Product_pages import  Product_page
+from PageObjects.product_pages import  Product_page
 from Utilities.readproperties import Read_proeprties
 
 class Test_productPage:
@@ -12,7 +12,7 @@ class Test_productPage:
     search_book = Read_proeprties.user_book()
     #This are locators
     All_products = "h3"
-    buttons = "//div[@class='jsx-313054587 BookCard_mainUpperBookDiv__lb5Cu']/div[2]"
+    buttons_css = "div[style='position: absolute; bottom: 10px; width: 100%;']"
     add_to_cart_button1 = "//div[text()='Add to Cart']"
     add_to_cart_button2 = "(//div[text()='Add to Cart'])[2]"
     price_of_product_id ="cartBookShippingS"
@@ -33,7 +33,7 @@ class Test_productPage:
         self.product_list= []
         for self.product in self.all_product:
             self.product_list.append(self.product.text)
-            # print(self.product.text)
+            print(self.product.text)
             # if self.product.text in ["New Wave", "New Start Up Science Book 5"]:
             #     self.product.click()
 
@@ -46,7 +46,7 @@ class Test_productPage:
 
             # self.driver.switch_to.window(self.windows[0])
         #Add to card buttons
-        self.allbuttons = self.driver.find_elements(By.XPATH, self.buttons)
+        self.allbuttons = self.driver.find_elements(By.CSS_SELECTOR, self.buttons_css)
 
         for self.button in self.allbuttons[:4]:
             try:
@@ -71,7 +71,7 @@ class Test_productPage:
         self.product_page.click_login()
 
         #store the product price in list
-        self.allPrice = self.driver.find_elements(By.XPATH, self.price_of_product_id)
+        self.allPrice = self.driver.find_elements(By.ID, self.price_of_product_id)
         self.pricelist= []
 
 

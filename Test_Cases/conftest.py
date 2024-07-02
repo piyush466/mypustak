@@ -8,25 +8,24 @@ from selenium.webdriver.firefox.options import Options as FirefoxOptions
 def setup(request):
     browser_name=request.config.getoption("browser_name")
     if browser_name == "chrome":
-        options = ChromeOptions()
-        options.add_argument("--headless")
-        driver = webdriver.Chrome(options=options)
+        # options = ChromeOptions()
+        # options.add_argument("--headless")
+        driver = webdriver.Chrome()
 
     elif browser_name == "firefox":
-        options = FirefoxOptions()
-        options.add_argument("--headless")
+        # options = FirefoxOptions()
+        # options.add_argument("--headless")
         driver = webdriver.Firefox()
 
-    elif browser_name == "IE":
-        driver = webdriver.Ie()
+    elif browser_name == "Edge":
+        driver = webdriver.Edge()
 
     else:
         driver = webdriver.Chrome()
     driver.get("https://www.mypustak.com/")
     driver.maximize_window()
     request.cls.driver = driver
-    yield driver
-    driver.close()
+    return driver
 
 def pytest_addoption(parser):
     parser.addoption(
