@@ -42,7 +42,7 @@ class Add_product(Base_page):
         self.driver.find_element(By.CSS_SELECTOR, self.search_product_css).send_keys(product_name)
         self.driver.find_element(By.XPATH, self.click_on_search_xpath).click()
 
-    def products_name(self):
+    def products_names(self):
         self.p_names = self.driver.find_elements(By.CSS_SELECTOR, self.all_products_names_css)
         self.all_product_list = []
         for self.product in self.p_names:

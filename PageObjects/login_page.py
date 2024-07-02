@@ -25,6 +25,7 @@ class Login:
         self.driver.find_element(By.CSS_SELECTOR, self.click_proceed_css).click()
 
     def send_password(self,password):
+        time.sleep(2)
         self.driver.find_element(By.CSS_SELECTOR, self.send_passwod_css).send_keys(password)
 
     def click_login(self):
