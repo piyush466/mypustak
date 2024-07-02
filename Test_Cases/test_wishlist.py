@@ -1,5 +1,7 @@
 import time
 
+from selenium.webdriver import ActionChains
+
 from PageObjects.product_p import Add_product
 from PageObjects.wishlist_page import Wishlist
 from Test_Cases.test_loginPage import Test_Login
@@ -15,6 +17,11 @@ class Test_Wishlist:
         time.sleep(2)
         self.wishlist = Wishlist(self.driver)
         self.wishlist.click_on_wishlist()
+        self.wishlist.click_on_reader()
+        self.wishlist.click_wishlist_product()
+        time.sleep(2)
+        self.wishlist.check_products_are_visible_in_wishlist()
+        assert self.wishlist.added_products == self.wishlist.added_products, "Products are not added"
 
 
 

@@ -8,10 +8,12 @@ from selenium.webdriver.support.wait import WebDriverWait
 
 class Wishlist:
 
-    click_on_wishlist_css = "div[class='jsx-313054587 Product_heartdiv__p_poW   null']"
+    # click_on_wishlist_css = "div[class='jsx-313054587 Product_heartdiv__p_poW   null']"
     products_names = 'h3'
     wishlist_click = "div[class='jsx-313054587 round-circle d-flex justify-content-center align-items-center']"
-
+    click_on_hi_reader_css = "span[style='display: flex; align-items: center;']"
+    click_on_wishlist_css2_from_list = '[data-testid="ListOutlinedIcon"]'
+    wishlish_products = "[class='jsx-699a0f249084c2b3 Wishlist_wishTitle__2np5k']"
 
     def __init__(self,driver):
         self.driver = driver
@@ -20,13 +22,36 @@ class Wishlist:
     def click_on_wishlist(self):
         time.sleep(5)
         self.product_names = self.driver.find_elements(By.CSS_SELECTOR, self.products_names)
-        self.wishlist_click =  self.driver.find_elements(By.CSS_SELECTOR, self.wishlist_click)
+        self.wishlist =  self.driver.find_elements(By.CSS_SELECTOR, self.wishlist_click)
 
-        for self.product_name,self.wish in zip(self.product_names, self.wishlist_click):
-            print(self.product_name.text)
+        for self.product_name, self.wish in zip(self.product_names, self.wishlist):
+            # print(self.product_name.text)
             if self.product_name.text == "Book Lost Tales Part 1 His":
                 self.wish.click()
                 break
+
+    def click_on_reader(self):
+        self.driver.find_element(By.CSS_SELECTOR, self.click_on_hi_reader_css).click()
+
+    def click_wishlist_product(self):
+        self.driver.find_element(By.CSS_SELECTOR, self.click_on_wishlist_css2_from_list).click()
+
+    def check_products_are_visible_in_wishlist(self):
+        time.sleep(4)
+        self.wishlist_products_text = self.driver.find_elements(By.CSS_SELECTOR, self.wishlish_products)
+        self.added_products = []
+        for self.wishlist_product in self.wishlist_products_text:
+            self.all_wish_product_text = self.wishlist_product.text
+            self.added_products.append(self.all_wish_product_text)
+
+        # print(self.added_products)
+
+
+
+
+
+
+
 
 
 
