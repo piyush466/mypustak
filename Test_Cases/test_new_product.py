@@ -5,7 +5,7 @@ from selenium.webdriver.common.by import By
 from PageObjects.login_page import Login
 from PageObjects.product_p import Add_product
 from PageObjects.product_pages import Product_page
-from Test_Cases.test_loginPage import Test_Login
+#from Test_Cases.test_loginPage import Test_Login
 
 
 class Test_new_products:
@@ -16,8 +16,9 @@ class Test_new_products:
 
     def test_products_again(self,setup):
         self.driver = setup
+
         self.product = Add_product(self.driver)
-        self.product.search_product(self.search_book_name)
+        self.product.search_product_name(self.search_book_name)
         time.sleep(3)
         self.product.products_name()
         Login(self.driver).click_on_login()

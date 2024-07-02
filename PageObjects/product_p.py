@@ -3,26 +3,42 @@ import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 
+from PageObjects.base_page import Base_page
 
-class Add_product:
 
-    search_product_css = "form[role='search'] input[class='jsx-7037538209317f08 searchInput']"
-    click_on_search_xpath = "(//button[@type='submit'])[1]"
+class Add_product(Base_page):
+
+    # search_product = By.CSS_SELECTOR, "form[role='search'] input[class='jsx-7037538209317f08 searchInput']"
+    # click_on_search = (By.XPATH,"(//button[@type='submit'])[1]")
+    # all_products_names = (By.CSS_SELECTOR, "h3")
+    # add_to_cart = (By.CSS_SELECTOR, "div[style='position: absolute; bottom: 10px; width: 100%;']")
+    # add_to_cart2 = (By.CSS_SELECTOR, "div[class='jsx-313054587 Product_addtoCartText__hr75M']")
+    # click_on_cart = (By.CSS_SELECTOR, "span[class='{`${styles.icon}`}']")
+    # all_products_price = (By.CSS_SELECTOR,"cartBookShippingS")
+    # get_in_out = (By.ID, "CartWalletCheckBox")
+    # total_price_of_products = (By.ID, "Totalpricediv")
+    # click_proceed_to_checkout_btn = (By.CSS_SELECTOR, ".MuiButton-containedWarning.w-100.py-3 ")
+
+    #new ones
+    search_product_css =  "form[role='search'] input[class='jsx-7037538209317f08 searchInput']"
+    click_on_search_xpath  =  "(//button[@type='submit'])[1]"
     all_products_names_css = "h3"
     add_to_cart_css = "div[style='position: absolute; bottom: 10px; width: 100%;']"
     add_to_cart2_css = "div[class='jsx-313054587 Product_addtoCartText__hr75M']"
     click_on_cart_css = "span[class='{`${styles.icon}`}']"
-    all_products_price_css = "cartBookShippingS"
+    all_products_price_css =  "cartBookShippingS"
     get_in_out_id = "CartWalletCheckBox"
     total_price_of_products_id = "Totalpricediv"
     click_proceed_to_checkout_btn_css = ".MuiButton-containedWarning.w-100.py-3 "
 
-
-    def __init__(self,driver):
+    def __init__(self, driver):
         self.driver = driver
 
 
-    def search_product(self,product_name):
+    def search_product_name(self, product_name):
+        time.sleep(2)
+        # self.send_keys1(self.search_product, product_name)
+        # self.do_click(self.click_on_search)
         self.driver.find_element(By.CSS_SELECTOR, self.search_product_css).send_keys(product_name)
         self.driver.find_element(By.XPATH, self.click_on_search_xpath).click()
 
@@ -30,9 +46,10 @@ class Add_product:
         self.p_names = self.driver.find_elements(By.CSS_SELECTOR, self.all_products_names_css)
         self.all_product_list = []
         for self.product in self.p_names:
-            print(self.product.text)
+            # print(self.product.text)
             self.all_product_list.append(self.product.text)
             if self.product.text == "Books V. Cigarettes":
+                # self.do_click(self)
                 self.driver.find_element(By.CSS_SELECTOR, self.add_to_cart_css).click()
                 time.sleep(3)
                 try:
@@ -63,7 +80,7 @@ class Add_product:
         self.var_price = 0
         for self.add in self.after_removeing_rupees_sign:
             self.var_price = self.var_price + self.add
-        print("cart price value:- ",self.var_price)
+        print("cart price value:- ", self.var_price)
         try:
             self.driver.find_element(By.ID, self.get_in_out_id).click()
 
