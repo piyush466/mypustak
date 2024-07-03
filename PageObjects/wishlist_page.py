@@ -25,13 +25,9 @@ class Wishlist:
         self.heart_click = self.driver.find_element(By.XPATH,
                                                     f"//h3[text()='{book_name}']//ancestor::div[contains(@class, 'jsx-3')]"
                                                     f"//div[contains(@class, 'jsx-313054587 Product_heart')]")
-        time.sleep(2)
-        self.on_or_off = self.driver.find_element(By.XPATH, "//h3[text()='Book Keeping And Accountancy']"
-                                                            "//ancestor::div[contains(@class, 'jsx-3')]//div[contains(@class, '313054587 Product_heartdiv__p_poW   Product_')]")
 
-        print(self.on_or_off.is_selected())
+        self.heart_click.click()
 
-        # self.heart_click.click()
 
     def click_on_reader(self):
         self.driver.find_element(By.CSS_SELECTOR, self.click_on_hi_reader_css).click()

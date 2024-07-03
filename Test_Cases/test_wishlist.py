@@ -18,14 +18,12 @@ class Test_Wishlist:
         time.sleep(2)
         self.wishlist = Wishlist(self.driver)
         self.wishlist.click_on_wishlist(self.book_name1)
+        self.wishlist.click_on_reader()
+        self.wishlist.click_wishlist_product()
+        time.sleep(2)
+        self.wishlist.check_products_are_visible_in_wishlist()
 
-
-        # self.wishlist.click_on_reader()
-        # self.wishlist.click_wishlist_product()
-        # time.sleep(2)
-        # self.wishlist.check_products_are_visible_in_wishlist()
-        #
-        # assert self.book_name1 in self.wishlist.added_products, "Product Not in wishlist"
+        assert self.book_name1 in self.wishlist.added_products, "Product Not in wishlist"
 
 
 
