@@ -23,6 +23,7 @@ def setup(request):
     else:
         driver = webdriver.Chrome()
     driver.get("https://www.mypustak.com/")
+
     driver.maximize_window()
     request.cls.driver = driver
     return driver

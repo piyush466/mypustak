@@ -20,7 +20,7 @@ class Test_new_products:
         self.product = Add_product(self.driver)
         self.product.search_product_name(self.search_book_name)
         time.sleep(3)
-        self.product.products_name()
+        self.product.products_names()
         Login(self.driver).click_on_login()
         Login(self.driver).send_email(self.user_email)
         Login(self.driver).click_proceed()
