@@ -19,16 +19,12 @@ class Wishlist:
         self.driver = driver
 
 
-    def click_on_wishlist(self):
+    def click_on_wishlist(self,book_name):
         time.sleep(5)
-        self.product_names = self.driver.find_elements(By.CSS_SELECTOR, self.products_names)
-        self.wishlist =  self.driver.find_elements(By.CSS_SELECTOR, self.wishlist_click)
-
-        for self.product_name, self.wish in zip(self.product_names, self.wishlist):
-            # print(self.product_name.text)
-            if self.product_name.text == "Book Lost Tales Part 1 His":
-                self.wish.click()
-                break
+        #//h3[@title='BOOK KEEPING AND ACCOUNTANCY']//ancestor::div[contains(@class, 'jsx-3')]//div[contains(@class, '313054587 Product_h')]
+        self.heart_click = self.driver.find_element(By.XPATH, f"//h3[@title='{book_name}']"
+                                           "//ancestor::div[contains(@class, 'jsx-3')]//div[contains(@class, '313054587 Product_h')]")
+        self.heart_click.click()
 
     def click_on_reader(self):
         self.driver.find_element(By.CSS_SELECTOR, self.click_on_hi_reader_css).click()
