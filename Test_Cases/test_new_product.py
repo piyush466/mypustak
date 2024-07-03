@@ -3,7 +3,7 @@ import time
 from selenium.webdriver.common.by import By
 
 from PageObjects.login_page import Login
-from PageObjects.product_p import Add_product
+from PageObjects.new_product_page import Add_product
 from PageObjects.product_pages import Product_page
 #from Test_Cases.test_loginPage import Test_Login
 

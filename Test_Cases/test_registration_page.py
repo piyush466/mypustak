@@ -7,11 +7,18 @@ from PageObjects.registration import Register
 
 
 class Test_registration:
-    enter_new_email = "piyush580@gmail.com"
-    enter_mobile_no = "8411878794"
-    enter_password = "piyush@123"
+    """
+        Test class for the registration process.
+        """
+    EMAIL = "piyush580@gmail.com"
+    MOBILE_NO = "8411878794"
+    PASSWORD = "piyush@123"
 
-    def test_register(self,setup):
+
+def test_register(self,setup):
+        """
+        Test case for user registration.
+        """
         self.driver = setup
         self.register = Register(self.driver)
         self.register.click_login()
