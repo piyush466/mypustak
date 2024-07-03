@@ -25,11 +25,6 @@ class Test_Filters:
 
 
 
-    time.sleep(2)
-
-
-
-
 
 
 

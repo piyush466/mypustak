@@ -19,7 +19,7 @@ class Filters:
         self.checkboxes = self.driver.find_elements(By.CSS_SELECTOR, "input[type='checkbox']")
 
         for self.filter, self.checkbox in zip(self.all_filter_names, self.checkboxes):
-            print(self.filter.text)
+            # print(self.filter.text)
             if self.filter.text == filter_name1:
                 time.sleep(1)
                 self.filter.click()
