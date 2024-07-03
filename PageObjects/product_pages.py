@@ -14,13 +14,13 @@ class Product_page:
     # click_cart_xpath ="(//span[@class='MuiBadge-root mui-1rzb3uu'])[1]"
     click_on_add_to_car_btn_css = "div[style='position: absolute; bottom: 10px; width: 100%;']"
     email_Id_for_login  = "login_email"
-    proceed_btn_css= "button[class='MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-fullWidth MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-fullWidth mui-6c44q9']"
+    proceed_btn_css= "div[class='jsx-724c82a157249092 Checkuser_Login_feild__DCWJD'] button"
     password_id = "login_password"
-    click_login_css = "button[class='MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-fullWidth MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-fullWidth mui-6c44q9']"
+    click_login_css = "form[class='jsx-a0f39cc52fe7e0e3 Login_form'] button[type='submit']"
     price_verify_css  = ".fw-bold "
-    proceed_to_checkout_css = "button[class='MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedWarning MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedWarning MuiButton-sizeMedium MuiButton-containedSizeMedium w-100 py-3 text-white shadow mui-ypa2qc']"
+    proceed_to_checkout_css = "div[class='CartPage_cart_right_inner__EfJ_o bg-white '] button"
     offer_product_price_css = "span[style='color: rgb(0, 0, 0); font-weight: bold;']"
-    click_on_want_book = "button[class='MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium mui-2nafv5']"
+
 
     def __init__(self,driver):
         self.driver =driver

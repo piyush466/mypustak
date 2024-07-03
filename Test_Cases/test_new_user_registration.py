@@ -13,14 +13,6 @@ from Test_Cases.test_user_login_page import Test_Login
 
 
 class Test_registration:
-    """
-        Test class for the registration process.
-        """
-    # unique_id = ''.join(random.choices(string.ascii_letters, k=2))
-    # enter_new_email =f"user_{unique_id}@gmail.com"
-    # enter_mobile_no = "8411878794"
-    # enter_password = "piyush@123"
-
 
     def test_register(self,setup):
             """
