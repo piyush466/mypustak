@@ -13,13 +13,12 @@ class Test_Logout:
 
     def test_user_can_logout(self, setup):
         self.driver = setup
+        self.driver.implicitly_wait(10)
         self.login_test = Test_Login()
         self.login_test.setup = self.driver  # Set the setup for Test_Login instance
         self.login_test.test_login(self.driver)
-        time.sleep(2)
         Wishlist(self.driver).click_on_reader()
         self.driver.find_element(By.XPATH, self.logout).click()
-        time.sleep(3)
         self.text_login = self.driver.find_element(By.CSS_SELECTOR, Login(self.driver).click_on_login_css).text
         assert  self.text_login == "Login" , "Logout unsuccesfull"
 
