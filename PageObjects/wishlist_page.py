@@ -15,13 +15,14 @@ class Wishlist:
     click_on_wishlist_css2_from_list = '[data-testid="ListOutlinedIcon"]'
     wishlish_products = "[class='jsx-699a0f249084c2b3 Wishlist_wishTitle__2np5k']"
 
+
     def __init__(self,driver):
         self.driver = driver
 
 
     def click_on_wishlist(self,book_name):
         time.sleep(5)
-        #//h3[@title='BOOK KEEPING AND ACCOUNTANCY']//ancestor::div[contains(@class, 'jsx-3')]//div[contains(@class, '313054587 Product_h')]
+
         self.heart_click = self.driver.find_element(By.XPATH, f"//h3[@title='{book_name}']"
                                            "//ancestor::div[contains(@class, 'jsx-3')]//div[contains(@class, '313054587 Product_h')]")
         self.heart_click.click()
