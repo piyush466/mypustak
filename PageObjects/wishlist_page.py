@@ -22,8 +22,7 @@ class Wishlist:
 
     def click_on_wishlist(self,book_name):
         time.sleep(5)
-        self.heart_click = self.driver.find_element(By.XPATH,
-                                                    f"//h3[text()='{book_name}']//ancestor::div[contains(@class, 'jsx-3')]"
+        self.heart_click = self.driver.find_element(By.XPATH, f"//h1[text()='{book_name}']//ancestor::div[contains(@class, 'jsx-3')]"
                                                     f"//div[contains(@class, 'jsx-313054587 Product_heart')]")
 
         self.heart_click.click()

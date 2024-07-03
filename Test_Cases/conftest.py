@@ -4,6 +4,9 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options as ChromeOptions
 from selenium.webdriver.firefox.options import Options as FirefoxOptions
 
+import data.test_data
+
+
 @pytest.fixture(scope="class")
 def setup(request):
     browser_name=request.config.getoption("browser_name")
@@ -22,7 +25,7 @@ def setup(request):
 
     else:
         driver = webdriver.Chrome()
-    driver.get("https://www.mypustak.com/")
+    driver.get(data.test_data.url)
 
     driver.maximize_window()
     request.cls.driver = driver

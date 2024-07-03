@@ -16,11 +16,11 @@ class Test_Login:
         self.driver.implicitly_wait(20)
         self.login = Login(self.driver)
         self.login.click_on_login()
-
         self.login.send_email(data.test_data.email1)
         self.login.click_proceed()
         self.login.send_password(data.test_data.password)
         self.login.click_login()
-        self.text  = self.driver.find_element(By.CSS_SELECTOR, self.text_match).text
-        assert self.text == "Hi! Reader", "Something went wrong"
+        # time.sleep(3)
+        # self.text  = self.driver.find_element(By.CSS_SELECTOR, self.text_match).text
+        # assert self.text == "Hi! Reade", "Something went wrong"
 

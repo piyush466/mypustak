@@ -9,7 +9,7 @@ from selenium.webdriver.common.by import By
 
 import data.test_data
 from PageObjects.registration import Register
-from Test_Cases.test_loginPage import Test_Login
+from Test_Cases.test_user_login_page import Test_Login
 
 
 class Test_registration:

@@ -2,6 +2,7 @@ import time
 
 from selenium.webdriver.common.by import By
 
+import data.test_data
 from PageObjects.login_page import Login
 from PageObjects.new_product_page import Add_product
 from PageObjects.product_pages import Product_page
@@ -9,23 +10,17 @@ from PageObjects.product_pages import Product_page
 
 
 class Test_new_products:
-    search_book_name = "Book"
-    user_email = "piyush.alphabin@gmail.com"
-    user_password = "Piyush@123"
 
-
-    def test_products_again(self,setup):
+    def test_add_cart_and_match_values_products_again(self, setup):
         self.driver = setup
-
+        self.driver.implicitly_wait(20)
         self.product = Add_product(self.driver)
-        self.product.search_product_name(self.search_book_name)
-        time.sleep(3)
+        self.product.search_product_name(data.test_data.search_book_name)
         self.product.products_names()
         Login(self.driver).click_on_login()
-        Login(self.driver).send_email(self.user_email)
+        Login(self.driver).send_email(data.test_data.email1)
         Login(self.driver).click_proceed()
-        time.sleep(2)
-        Login(self.driver).send_password(self.user_password)
+        Login(self.driver).send_password(data.test_data.password)
         Login(self.driver).click_login()
         self.product.click_on_cart()
         self.product.all_product_names_and_price()

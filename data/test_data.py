@@ -12,3 +12,15 @@ enter_password = "piyush@123"
 email1 = "piyush.alphabin@gmail.com"
 password = "Piyush@123"
 
+# URL
+url = "https://www.mypustak.com/"
+
+#search your BOOK on header
+search_book_name = "Book"
+
+#product name to add in wishlist
+book_name1 = "Book Of General Knowledge Part 2"
+
+
+
+

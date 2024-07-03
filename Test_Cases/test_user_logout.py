@@ -5,7 +5,7 @@ from selenium.webdriver.common.by import By
 
 from PageObjects.login_page import Login
 from PageObjects.wishlist_page import Wishlist
-from Test_Cases.test_loginPage import Test_Login
+from Test_Cases.test_user_login_page import Test_Login
 
 
 class Test_Logout:
