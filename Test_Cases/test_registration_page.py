@@ -7,7 +7,7 @@ from PageObjects.registration import Register
 
 
 class Test_registration:
-    enter_new_email = "piyush57@gmail.com"
+    enter_new_email = "piyush580@gmail.com"
     enter_mobile_no = "8411878794"
     enter_password = "piyush@123"
 

@@ -22,7 +22,7 @@ class Test_Wishlist:
         self.wishlist.click_wishlist_product()
         time.sleep(2)
         self.wishlist.check_products_are_visible_in_wishlist()
-        assert self.book_name in self.wishlist.added_products, "Not in wishlist"
+        assert self.book_name in self.wishlist.added_products, "Product Not in wishlist"
 
 
 
