@@ -11,7 +11,6 @@ from Test_Cases.test_loginPage import Test_Login
 class Test_Logout:
     logout = "(//div[@style='display: block; padding: 0.7rem 1rem 0rem; text-decoration: none; cursor: pointer;'])[8]"
 
-
     def test_user_can_logout(self, setup):
         self.driver = setup
         self.login_test = Test_Login()
