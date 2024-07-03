@@ -38,10 +38,11 @@ class Wishlist:
         self.wishlist_products_text = self.driver.find_elements(By.CSS_SELECTOR, self.wishlish_products)
         self.added_products = []
         for self.wishlist_product in self.wishlist_products_text:
+            print(self.wishlist_product.text)
             self.all_wish_product_text = self.wishlist_product.text
             self.added_products.append(self.all_wish_product_text)
 
-        # print(self.added_products)
+        print(self.added_products)
 
 
 

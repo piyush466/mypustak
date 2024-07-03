@@ -9,6 +9,8 @@ from PageObjects.login_page import Login
 
 class Test_Login:
     text_match = "span[style='display: flex; align-items: center;']"
+    email1 = "piyush.alphabin@gmail.com"
+    password = "Piyush@123"
 
 
     def test_login(self, setup):

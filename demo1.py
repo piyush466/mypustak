@@ -1,46 +1,35 @@
-# import time
-#
-# from selenium import webdriver
-# from selenium.webdriver import ActionChains
-# from selenium.webdriver.common.by import By
-# from webdriver_manager.chrome import ChromeDriverManager
-#
-# driver = webdriver.Chrome(ChromeDriverManager().install())
-#
-# driver.get("https://demo.alphabin.co/")
-# driver.implicitly_wait(10)
-# driver.find_element(By.XPATH, "(//button[text()='Shop Now'])[1]").click()
-#
-# all_products = driver.find_elements(By.XPATH, "//div[@class='hover:shadow-md group w-[340px] h-[447px] mt-[2rem] hover:bg-[#fff] rounded-[5px] hover:cursor-pointer flex flex-col justify-center items-center relative px-3']")
-#
-# for product in all_products[3:]:
-#     product_names = product.find_element(By.XPATH, "a/div/div/h1").text
-#     if product_names in ["Router", "Wireless mouse" ]:
-#         action = ActionChains(driver)
-#         add_to_cart = product.find_element(By.XPATH, "div[2]/button")
-#         action.move_to_element(add_to_cart).perform()
-#         # product.find_element(By.XPATH, "div[2]/button").click()
-#         add_to_cart.click()
-#
-# driver.find_element(By.XPATH, "(//div[@class='cursor-pointer hidden lg:flex'])[2]").click()
-# driver.find_element(By.XPATH, "//button[text()='CHECKOUT']").click()
-# time.sleep(5)
+import time
+
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
+driver = webdriver.Chrome()
+driver.get("https://www.amazon.in/")
+driver.implicitly_wait(10)
+driver.maximize_window()
+
+driver.find_element(By.ID, "twotabsearchtextbox").send_keys("iphone14")
+driver.find_element(By.ID, "nav-search-submit-button").click()
+
+allphones = driver.find_elements(By.CSS_SELECTOR, "span[class='a-size-medium a-color-base a-text-normal']")
 
 
+for phone in allphones:
+    print(phone.text)
+    if phone.text == "Apple iPhone 14 (512 GB) - Purple":
+        phone.click()
 
+windows = driver.window_handles
+driver.switch_to.window(windows[1])
+print(driver.title)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+time.sleep(2)
+try:
+    element = WebDriverWait(driver,10).until(EC.presence_of_element_located((By.XPATH, '//*[@id="add-to-cart-button"]')))
+    element.click()
+    # driver.find_element(By.CSS_SELECTOR, "[id='submit.add-to-cart-announce']").click()
+except Exception as E:
+    print(E)
+time.sleep(3)
