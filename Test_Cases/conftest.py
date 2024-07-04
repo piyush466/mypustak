@@ -11,14 +11,14 @@ import data.test_data
 def setup(request):
     browser_name=request.config.getoption("browser_name")
     if browser_name == "chrome":
-        # options = ChromeOptions()
-        # options.add_argument("--headless")
-        driver = webdriver.Chrome()
+        options = ChromeOptions()
+        options.add_argument("--headless")
+        driver = webdriver.Chrome(options=options)
 
     elif browser_name == "firefox":
-        # options = FirefoxOptions()
-        # options.add_argument("--headless")
-        driver = webdriver.Firefox()
+        options = FirefoxOptions()
+        options.add_argument("--headless")
+        driver = webdriver.Firefox(options=options)
 
     elif browser_name == "Edge":
         driver = webdriver.Edge()
