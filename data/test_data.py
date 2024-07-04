@@ -22,7 +22,7 @@ search_book_name = "Book"
 
 
 #product name to add in wishlist
-book_name1 = "Book Of Shadows"
+book_name1 = "Book Keeping And Accountancy"
 
 
 
