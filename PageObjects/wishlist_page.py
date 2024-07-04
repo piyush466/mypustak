@@ -23,7 +23,7 @@ class Wishlist:
     def click_on_wishlist(self,book_name):
         time.sleep(5)
         self.heart_click = self.driver.find_element(By.XPATH, f"//h1[text()='{book_name}']//ancestor::div[contains(@class, 'jsx-3')]"
-                                                    f"//div[contains(@class, 'jsx-313054587 Product_heart')]")
+                                                              f"//div[contains(@class, 'jsx-313054587 Product_heart')]")
 
         self.heart_click.click()
 
@@ -35,7 +35,7 @@ class Wishlist:
         self.driver.find_element(By.CSS_SELECTOR, self.click_on_wishlist_css2_from_list).click()
 
     def check_products_are_visible_in_wishlist(self):
-        time.sleep(4)
+        time.sleep(5)
         self.wishlist_products_text = self.driver.find_elements(By.CSS_SELECTOR, self.wishlish_products)
         self.added_products = []
         for self.wishlist_product in self.wishlist_products_text:
